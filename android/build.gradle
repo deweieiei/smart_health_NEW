@@ -16,3 +16,6 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+// android {
+//     namespace 'com.example.audioplayers_android'  // กำหนด namespace ของโปรเจกต์
+// }

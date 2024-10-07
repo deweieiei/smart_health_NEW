@@ -13,11 +13,25 @@ import 'package:smart_health/myapp/myapp.dart';
 //   });
 // }
 
+// void main() {
+//   HttpOverrides.global = GlobalHttpOverrides();
+//   WidgetsFlutterBinding.ensureInitialized();
+//   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+//       .then((_) {
+//     runApp(const MyApp());
+
+//   });
+// }
+
 void main() {
-  HttpOverrides.global = GlobalHttpOverrides();
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(const MyApp());
-  });
+  runApp(App());
+}
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
 }
