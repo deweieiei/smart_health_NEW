@@ -274,12 +274,12 @@ class _HealthRecordState extends State<HealthRecord> {
   void bleScan() {
     var namescan;
 
-    FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
+    FlutterBluePlus flutterBlue = FlutterBluePlus();
     final Map<String, String> online_devices = HashMap();
     namescan = DataProvider().namescan;
     StreamController<Map<String, String>> datas =
         StreamController<Map<String, String>>();
-    FlutterBluePlus.instance.scanResults.listen((results) {
+    FlutterBluePlus.scanResults.listen((results) {
       if (results.length > 0) {
         ScanResult r = results.last;
 
@@ -290,8 +290,8 @@ class _HealthRecordState extends State<HealthRecord> {
     });
 
     _streamSubscription = Stream.periodic(Duration(seconds: 5)).listen((_) {
-      FlutterBluePlus.instance.startScan(timeout: const Duration(seconds: 4));
-      FlutterBluePlus.instance.scanResults.listen((results) {
+      FlutterBluePlus.startScan(timeout: const Duration(seconds: 4));
+      FlutterBluePlus.scanResults.listen((results) {
         if (results.length > 0) {
           ScanResult r = results.last;
           // print(r.device.name);
@@ -303,7 +303,7 @@ class _HealthRecordState extends State<HealthRecord> {
     });
 
     _functionSubscription = Stream.periodic(Duration(seconds: 4))
-        .asyncMap((_) => flutterBlue.connectedDevices)
+        .asyncMap((_) => FlutterBluePlus.connectedDevices)
         .listen((connectedDevices) {
       connectedDevices.forEach((device) {
         print('functionstreamtimeกำลังทำงาน ');

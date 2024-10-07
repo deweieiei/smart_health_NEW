@@ -93,8 +93,8 @@ class _Fill_OutState extends State<Fill_Out> {
         boxtext_Fill_Out('นามสกุล', last_name),
         ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Color(0xff48B5AA),
-              onPrimary: Colors.white,
+              // primary: Color(0xff48B5AA),
+              // onPrimary: Colors.white,
             ),
             onPressed: sing,
             child: Text('เข้าตรวจ'))

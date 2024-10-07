@@ -45,7 +45,7 @@ class _DeviceState extends State<Device> {
                       StreamBuilder<List<BluetoothDevice>>(
                         stream: Stream.periodic(const Duration(seconds: 2))
                             .asyncMap((_) =>
-                                FlutterBluePlus.instance.connectedDevices),
+                                FlutterBluePlus.connectedDevices),
                         initialData: const [],
                         builder: (c, snapshot) => Column(
                           children: snapshot.data!.map((d) {

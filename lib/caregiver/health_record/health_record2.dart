@@ -57,7 +57,7 @@ class _HealthRecord2State extends State<HealthRecord2> {
   List<String> namescan = DataProvider().namescan;
   StreamSubscription? _functionScan;
   StreamSubscription? _functionReaddata;
-  FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
+  FlutterBluePlus flutterBlue = FlutterBluePlus();
   final Map<String, String> online_devices = HashMap();
   StreamController<Map<String, String>> datas =
       StreamController<Map<String, String>>();
@@ -160,9 +160,9 @@ class _HealthRecord2State extends State<HealthRecord2> {
   void bleScan() {
     _functionScan = Stream.periodic(Duration(seconds: 5)).listen((_) {
       print('สเเกน   ');
-      FlutterBluePlus.instance.startScan(timeout: const Duration(seconds: 4));
+      FlutterBluePlus.startScan(timeout: const Duration(seconds: 4));
     });
-    FlutterBluePlus.instance.scanResults.listen((results) {
+    FlutterBluePlus.scanResults.listen((results) {
       if (results.length > 0) {
         ScanResult r = results.last;
         // print(r.device.name);
@@ -185,7 +185,7 @@ class _HealthRecord2State extends State<HealthRecord2> {
     });
 
     _functionReaddata = Stream.periodic(Duration(seconds: 4))
-        .asyncMap((_) => flutterBlue.connectedDevices)
+        .asyncMap((_) => FlutterBluePlus.connectedDevices)
         .listen((connectedDevices) {
       connectedDevices.forEach((device) {
         if (device.name == 'Yuwell Glucose' &&

@@ -103,7 +103,7 @@ class _DeviceState extends State<Device> {
   }
 
   // ignore: deprecated_member_use
-  FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
+  FlutterBluePlus flutterBlue = FlutterBluePlus();
   void ble_on() async {
     bool isBluetoothOn = await FlutterBluePlus.isOn;
     print("isBluetoothOn=${isBluetoothOn}");

@@ -43,9 +43,9 @@ class _ScanBLEState extends State<ScanBLE> {
     });
     print('กำลังเเสกน');
     // ignore: deprecated_member_use
-    FlutterBluePlus.instance.startScan(timeout: const Duration(seconds: 4));
+    FlutterBluePlus.startScan(timeout: const Duration(seconds: 4));
     // ignore: deprecated_member_use
-    FlutterBluePlus.instance.scanResults.listen((results) {
+    FlutterBluePlus.scanResults.listen((results) {
       if (results.length > 0) {
         ScanResult r = results.last;
 
@@ -69,7 +69,7 @@ class _ScanBLEState extends State<ScanBLE> {
 
   Future<void> scanconnected() async {
     List<BluetoothDevice> devices =
-        await FlutterBluePlus.instance.connectedDevices;
+        await FlutterBluePlus.connectedDevices;
     setState(() {
       button = true;
       refresh = true;
@@ -431,8 +431,7 @@ class _ScanBLEState extends State<ScanBLE> {
                                     color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
-                                          color:
-                                              Color.fromARGB(255, 42, 100, 45),
+                                         //  color: Color.fromARGB(255, 42, 100, 45),
                                           blurRadius: 1,
                                           offset: Offset(0, 1))
                                     ]),

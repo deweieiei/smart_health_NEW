@@ -28,7 +28,7 @@ class _scanbleState extends State<scanble> {
   }
 
   void initState() {
-    FlutterBluePlus.instance.startScan(timeout: const Duration(seconds: 4));
+    FlutterBluePlus.startScan(timeout: const Duration(seconds: 4));
     //
     // TODO: implement initState
     super.initState();
@@ -49,7 +49,7 @@ class _scanbleState extends State<scanble> {
               //     .startScan(timeout: const Duration(seconds: 4)),
               child: Container(
                 child: StreamBuilder<List<ScanResult>>(
-                  stream: FlutterBluePlus.instance.scanResults,
+                  stream: FlutterBluePlus.scanResults,
                   initialData: const [],
                   builder: (c, snapshot) => SafeArea(
                     child: ListView(
@@ -124,7 +124,7 @@ class _scanbleState extends State<scanble> {
           child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             GestureDetector(
                 onTap: () {
-                  FlutterBluePlus.instance.stopScan();
+                  FlutterBluePlus.stopScan();
                   Navigator.pop(context);
                 },
                 child: BoxWidetdew(

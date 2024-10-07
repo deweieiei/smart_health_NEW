@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/esc_pos_utils_platform.dart';
 import 'package:get/get.dart';
 import 'package:openvidu_client/openvidu_client.dart';
 import 'package:provider/provider.dart';
@@ -247,101 +246,101 @@ class _UserInformation2State extends State<UserInformation2> {
   void printexam() async {
     List<int> bytes = [];
 
-    final profile = await CapabilityProfile.load(name: 'XP-N160I');
-    final generator = Generator(PaperSize.mm58, profile);
+  //   final profile = await CapabilityProfile.load(name: 'XP-N160I');
+  //   final generator = Generator(PaperSize.mm58, profile);
 
-    bytes += generator.text(context.read<DataProvider>().name_hospital,
-        styles: const PosStyles(align: PosAlign.center));
+  //   bytes += generator.text(context.read<DataProvider>().name_hospital,
+  //       styles: const PosStyles(align: PosAlign.center));
 
-    bytes += generator.text('Examination',
-        styles: const PosStyles(
-            width: PosTextSize.size1, height: PosTextSize.size1));
-    bytes += generator.text('\n');
-    bytes += generator.text('Doctor  :  pairot tanyajasesn');
-    bytes += generator.text('Results :  ${dx}');
-    bytes += generator.text('        :  ${doctor_note}');
-    printer?.printTest(bytes);
-  }
+  //   bytes += generator.text('Examination',
+  //       styles: const PosStyles(
+  //           width: PosTextSize.size1, height: PosTextSize.size1));
+  //   bytes += generator.text('\n');
+  //   bytes += generator.text('Doctor  :  pairot tanyajasesn');
+  //   bytes += generator.text('Results :  ${dx}');
+  //   bytes += generator.text('        :  ${doctor_note}');
+  //   printer?.printTest(bytes);
+  // }
 
-  Future<void> printq() async {
-    List<int> bytes = [];
+  // Future<void> printq() async {
+  //   List<int> bytes = [];
 
-    final profile = await CapabilityProfile.load(name: 'XP-N160I');
-    final generator = Generator(PaperSize.mm58, profile);
-    bytes += generator.text(context.read<DataProvider>().name_hospital,
-        styles: const PosStyles(align: PosAlign.center));
-    bytes += generator.text("Q ${resTojson['queue_number']}",
-        styles: const PosStyles(
-            align: PosAlign.center,
-            width: PosTextSize.size6,
-            height: PosTextSize.size6,
-            fontType: PosFontType.fontA));
-    bytes += generator.text('\n');
-    bytes +=
-        generator.text('Doctor :   ${resTojson['todays'][0]['doctor_name']}');
-    bytes += generator.text(
-        'Care   :  ${resTojson['todays'][0]['care_name']} / ( ${resTojson['todays'][0]['slot']} )');
-    bytes += generator.text('\n');
-    bytes += generator.text('Health Information',
-        styles: const PosStyles(align: PosAlign.center));
-    bytes += generator.row([
-      PosColumn(
-          width: 4,
-          text: 'height',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: 'weight',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: 'temp',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-    ]);
-    bytes += generator.row([
-      PosColumn(
-          width: 4,
-          text: height,
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: weight,
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: temp,
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-    ]);
-    bytes += generator.row([
-      PosColumn(
-          width: 4,
-          text: 'sys',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: 'dia',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: 'spo2',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-    ]);
-    bytes += generator.row([
-      PosColumn(
-          width: 4,
-          text: sys,
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: dia,
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 4,
-          text: spo2,
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-    ]);
-    ontap = false;
-    printer?.printTest(bytes);
+  //   final profile = await CapabilityProfile.load(name: 'XP-N160I');
+  //   final generator = Generator(PaperSize.mm58, profile);
+  //   bytes += generator.text(context.read<DataProvider>().name_hospital,
+  //       styles: const PosStyles(align: PosAlign.center));
+  //   bytes += generator.text("Q ${resTojson['queue_number']}",
+  //       styles: const PosStyles(
+  //           align: PosAlign.center,
+  //           width: PosTextSize.size6,
+  //           height: PosTextSize.size6,
+  //           fontType: PosFontType.fontA));
+  //   bytes += generator.text('\n');
+  //   bytes +=
+  //       generator.text('Doctor :   ${resTojson['todays'][0]['doctor_name']}');
+  //   bytes += generator.text(
+  //       'Care   :  ${resTojson['todays'][0]['care_name']} / ( ${resTojson['todays'][0]['slot']} )');
+  //   bytes += generator.text('\n');
+  //   bytes += generator.text('Health Information',
+  //       styles: const PosStyles(align: PosAlign.center));
+  //   bytes += generator.row([
+  //     PosColumn(
+  //         width: 4,
+  //         text: 'height',
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: 'weight',
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: 'temp',
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //   ]);
+  //   bytes += generator.row([
+  //     PosColumn(
+  //         width: 4,
+  //         text: height,
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: weight,
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: temp,
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //   ]);
+  //   bytes += generator.row([
+  //     PosColumn(
+  //         width: 4,
+  //         text: 'sys',
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: 'dia',
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: 'spo2',
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //   ]);
+  //   bytes += generator.row([
+  //     PosColumn(
+  //         width: 4,
+  //         text: sys,
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: dia,
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //     PosColumn(
+  //         width: 4,
+  //         text: spo2,
+  //         styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+  //   ]);
+  //   ontap = false;
+  //   printer?.printTest(bytes);
   }
 
   @override
@@ -466,7 +465,7 @@ class _UserInformation2State extends State<UserInformation2> {
                                                       setState(() {
                                                         ontap = true;
                                                       });
-                                                      printq();
+                                                     // printq();
                                                     },
                                                     child: Container(
                                                         height: _height * 0.05,
@@ -777,7 +776,7 @@ class _choiceState extends State<choice> {
       border: Border.all(color: Color.fromARGB(255, 245, 245, 245)),
       boxShadow: [
         BoxShadow(
-            color: Color(0xff0076B1),
+         //   color: Color(0xff0076B1),
             offset: Offset(0, 3),
             spreadRadius: 1,
             blurRadius: 2)
@@ -786,7 +785,8 @@ class _choiceState extends State<choice> {
     TextStyle style = TextStyle(
         fontFamily: context.read<DataProvider>().fontFamily,
         fontSize: _width * 0.035,
-        color: Color(0xff1B6286));
+       // color: Color(0xff1B6286)
+       );
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

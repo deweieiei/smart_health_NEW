@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/capability_profile.dart';
-import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/enums.dart';
-import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/generator.dart';
-import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/pos_column.dart';
-import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/pos_styles.dart';
-import 'package:flutter_pos_printer_platform/flutter_pos_printer_platform.dart';
+// import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/capability_profile.dart';
+// import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/enums.dart';
+// import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/generator.dart';
+// import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/pos_column.dart';
+// import 'package:flutter_pos_printer_platform/esc_pos_utils_platform/src/pos_styles.dart';
+// import 'package:flutter_pos_printer_platform/flutter_pos_printer_platform.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -2595,12 +2595,12 @@ class _ButtonPrintQueueState extends State<ButtonPrintQueue> {
 
   void selectDevice(BluetoothPrinter device) async {
     if (selectedPrinter != null) {
-      if ((device.address != selectedPrinter!.address) ||
-          (device.typePrinter == PrinterType.usb &&
-              selectedPrinter!.vendorId != device.vendorId)) {
-        await PrinterManager.instance
-            .disconnect(type: selectedPrinter!.typePrinter);
-      }
+      // if ((device.address != selectedPrinter!.address) ||
+      //     (device.typePrinter == PrinterType.usb &&
+      //         selectedPrinter!.vendorId != device.vendorId)) {
+      //   await PrinterManager.instance
+      //       .disconnect(type: selectedPrinter!.typePrinter);
+      // }
     }
 
     selectedPrinter = device;
@@ -2673,13 +2673,13 @@ class _ButtonPrintQueueState extends State<ButtonPrintQueue> {
     List<int> bytes = [];
 
     // Xprinter XP-N160I
-    final profile = await CapabilityProfile.load(name: 'XP-N160I');
+   // final profile = await CapabilityProfile.load(name: 'XP-N160I');
 
     // PaperSize.mm80 or PaperSize.mm58
-    final generator = Generator(PaperSize.mm58, profile);
+   // final generator = Generator(PaperSize.mm58, profile);
     // bytes += generator.setGlobalCodeTable('CP1252');
-    bytes += generator.text(context.read<DataProvider>().name_hospital,
-        styles: const PosStyles(align: PosAlign.center));
+//bytes += generator.text(context.read<DataProvider>().name_hospital,
+     //   styles: const PosStyles(align: PosAlign.center));
 
     // bytes += generator.text('Queue',
     //     styles: const PosStyles(
@@ -2687,79 +2687,79 @@ class _ButtonPrintQueueState extends State<ButtonPrintQueue> {
     //         width: PosTextSize.size2,
     //         height: PosTextSize.size2,
     //         fontType: PosFontType.fontA));
-    bytes += generator.text('');
-    bytes += generator.text("Q ${resTojson['queue_number']}",
-        styles: const PosStyles(
-            align: PosAlign.center,
-            width: PosTextSize.size3,
-            height: PosTextSize.size3,
-            fontType: PosFontType.fontA));
-    bytes += generator.text('\n');
-    bytes +=
-        generator.text('Doctor :   ${resTojson['todays'][0]['doctor_name']}');
-    bytes += generator.text(
-        'Care   :  ${resTojson['todays'][0]['care_name']} / ( ${resTojson['todays'][0]['slot']} )');
-    bytes += generator.text('\n');
-    bytes += generator.text('Health Information',
-        styles: const PosStyles(align: PosAlign.center));
-    bytes += generator.row([
-      PosColumn(
-          width: 2,
-          text: 'height',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: 'weight',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: 'temp',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: 'sys',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: 'dia',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: 'spo2',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-    ]);
-    bytes += generator.row([
-      PosColumn(
-          width: 2,
-          text: '${height}',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: '${weight}',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: '${temp}',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: '${bp_sys}',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: '${bp_dia}',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-      PosColumn(
-          width: 2,
-          text: '$spo2',
-          styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
-    ]);
+   // bytes += generator.text('');
+    // bytes += generator.text("Q ${resTojson['queue_number']}",
+    //     styles: const PosStyles(
+    //         align: PosAlign.center,
+    //         width: PosTextSize.size3,
+    //         height: PosTextSize.size3,
+    //         fontType: PosFontType.fontA));
+  //  bytes += generator.text('\n');
+  //  bytes +=
+  //      generator.text('Doctor :   ${resTojson['todays'][0]['doctor_name']}');
+  //  bytes += generator.text(
+   //     'Care   :  ${resTojson['todays'][0]['care_name']} / ( ${resTojson['todays'][0]['slot']} )');
+   // bytes += generator.text('\n');
+    // bytes += generator.text('Health Information',
+    //     styles: const PosStyles(align: PosAlign.center));
+  //  bytes += generator.row([
+      // PosColumn(
+      //     width: 2,
+      //     text: 'height',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: 'weight',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: 'temp',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: 'sys',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: 'dia',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: 'spo2',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+   // ]);
+   // bytes += generator.row([
+      // PosColumn(
+      //     width: 2,
+      //     text: '${height}',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: '${weight}',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: '${temp}',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: '${bp_sys}',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: '${bp_dia}',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+      // PosColumn(
+      //     width: 2,
+      //     text: '$spo2',
+      //     styles: const PosStyles(align: PosAlign.center, codeTable: 'CP1252')),
+    //]);
     // bytes += generator.text(
     //     '${resTojson['personal']['first_name']}   ${resTojson['personal']['last_name']}',
     //     styles: const PosStyles(align: PosAlign.center, codeTable: '255'));
     //  bytes += generator.text('$datatime');
     printer?.printTest(bytes); //
-    printer?.printEscPos(bytes, generator);
+   // printer?.printEscPos(bytes, generator);
   }
 
   @override
@@ -3207,21 +3207,21 @@ class _BoxStatusinformState extends State<BoxStatusinform> {
 
   void printexam() async {
     List<int> bytes = [];
-    final profile = await CapabilityProfile.load(name: 'XP-N160I');
-    final generator = Generator(PaperSize.mm58, profile);
-    bytes += generator.text(context.read<DataProvider>().name_hospital,
-        styles: const PosStyles(align: PosAlign.center));
+    // final profile = await CapabilityProfile.load(name: 'XP-N160I');
+    // final generator = Generator(PaperSize.mm58, profile);
+    // bytes += generator.text(context.read<DataProvider>().name_hospital,
+    //     styles: const PosStyles(align: PosAlign.center));
 
-    bytes += generator.text('Examination',
-        styles: const PosStyles(
-            width: PosTextSize.size1, height: PosTextSize.size1));
-    bytes += generator.text('\n');
-    bytes += generator.text('Doctor  :  pairot tanyajasesn');
-    bytes += generator.text('Results :  ${dx}');
-    bytes += generator.text('        :  ${doctor_note}');
-    // printer?.printTest(bytes);
+    // bytes += generator.text('Examination',
+    //     styles: const PosStyles(
+    //         width: PosTextSize.size1, height: PosTextSize.size1));
+    // bytes += generator.text('\n');
+    // bytes += generator.text('Doctor  :  pairot tanyajasesn');
+    // bytes += generator.text('Results :  ${dx}');
+    // bytes += generator.text('        :  ${doctor_note}');
+    // // printer?.printTest(bytes);
 
-    printer?.printEscPos(bytes, generator);
+    // printer?.printEscPos(bytes, generator);
   }
 
   void finished() async {

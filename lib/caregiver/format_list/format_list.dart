@@ -749,9 +749,9 @@ class _Pop_card_offlineState extends State<Pop_card_offline> {
                                   children: [
                                     ElevatedButton(
                                         style: ElevatedButton.styleFrom(
-                                          primary:
-                                              Color.fromARGB(255, 255, 0, 0),
-                                          onPrimary: Colors.white,
+                                          // primary:
+                                          //     Color.fromARGB(255, 255, 0, 0),
+                                          // onPrimary: Colors.white,
                                         ),
                                         onPressed: () {
                                           keypad_sound();
@@ -761,15 +761,15 @@ class _Pop_card_offlineState extends State<Pop_card_offline> {
                                     status == false
                                         ? ElevatedButton(
                                             style: ElevatedButton.styleFrom(
-                                              primary: context
-                                                          .read<DataProvider>()
-                                                          .status_internet ==
-                                                      false
-                                                  ? Color.fromARGB(
-                                                      45, 72, 181, 170)
-                                                  : Color.fromARGB(
-                                                      255, 72, 181, 170),
-                                              onPrimary: Colors.white,
+                                              // primary: context
+                                              //             .read<DataProvider>()
+                                              //             .status_internet ==
+                                              //         false
+                                              //     ? Color.fromARGB(
+                                              //         45, 72, 181, 170)
+                                              //     : Color.fromARGB(
+                                              //         255, 72, 181, 170),
+                                              // onPrimary: Colors.white,
                                             ),
                                             onPressed: () {
                                               keypad_sound();

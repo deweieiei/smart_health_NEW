@@ -3,7 +3,6 @@ import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_blue_plus/gen/flutterblueplus.pb.dart';
 import 'package:just_audio/just_audio.dart';
 
 class DataProvider with ChangeNotifier {
